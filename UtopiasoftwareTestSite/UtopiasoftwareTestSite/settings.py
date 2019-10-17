@@ -25,12 +25,13 @@ SECRET_KEY = 'r-2oiyq_ikqs1j5wy$@er#t*#gvc1f*ykkc!s9lm&hr!l4j#(_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "polls.apps.PollsConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,6 +76,16 @@ WSGI_APPLICATION = 'UtopiasoftwareTestSite.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'utopiasoftwaretestsite',
+        'USER': 'root',
+        'PASSWORD': 'mariadb',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'CONN_MAX_AGE': 300, # how long a connection should be active (time in seconds)
+
+    },
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
