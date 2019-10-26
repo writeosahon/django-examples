@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_*=x3e8kjw)37ozqku#*v4sz@qp$gz4llzu6-*!pgbdk4y#fi*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    #'django.contrib.sessions', # remove session database storage (if not using database storage for sessions)
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "electionsapp.apps.ElectionsApp"
@@ -105,6 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# settings for sessions
+SESSION_ENGINE = 'django.contrib.sessions.backends.file' # enable session engine using files
+SESSION_FILE_PATH = os.path.join(BASE_DIR, 
+"file_session_storage") # location where session will be stored when using file storage
+SESSION_COOKIE_AGE = 14 * 24 * 60 * 60 # session remain active for 14 days (in seconds)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
