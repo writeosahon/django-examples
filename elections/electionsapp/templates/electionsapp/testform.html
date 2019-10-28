@@ -1,0 +1,43 @@
+<style> /** style used to display error messages **/
+ul.errorlist {
+    margin-top: 0;
+    padding-left: 2em;
+}
+ul.errorlist > li {
+    list-style-type: none;
+    color: red;
+    margin: 0;
+}
+</style>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div>
+        <!-- manually generate the label -->
+        <label for="{{ form.name.id_for_label }}">Your Name Please: </label>
+        {{form.name}}
+        {{ form.name.errors }}
+    </div>
+    <div>
+        <!-- let django autoimatically generate label -->
+        {{form.registration_date.label_tag}}
+        {{form.registration_date}}
+        {{ form.registration_date.errors }}
+    </div>
+    <div>
+        <!-- let django autoimatically generate label -->
+        {{form.age.label_tag}}
+        {{form.age}}
+        {{ form.age.errors }}
+    </div>
+    <div>
+        <!-- let django autoimatically generate label -->
+        {{form.i_agree.label_tag}}
+        {{form.i_agree}}
+        {{ form.i_agree.errors }}
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div
+</form>
