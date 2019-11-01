@@ -10,10 +10,11 @@ ul.errorlist > li {
 }
 </style>
 
-{% for form in  formset %}
-
 <form action="" method="post">
     {% csrf_token %}
+    {{ formset.management_form }}
+{% for form in  formset %}
+    
     {{ form.non_field_errors }}
     <div>
         <!-- manually generate the label -->
@@ -39,9 +40,10 @@ ul.errorlist > li {
         {{form.i_agree}}
         {{ form.i_agree.errors }}
     </div>
-    <div>
-        <input type="submit" value="Submit">
-    </div
-</form>
-
+    <hr>
 {% endfor %}
+
+<div>
+    <input type="submit" value="Submit">
+</div
+</form>
