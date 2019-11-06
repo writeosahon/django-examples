@@ -1,0 +1,19 @@
+{% comment %}
+trying out a variety of template tags and filters    
+{% endcomment %}
+
+{# turn the numbers context variable into a list #}
+{% for number in  numbers|make_list %}
+{{number}}<br>
+{% endfor %}
+<hr><hr>
+
+{# turn the numbers context variable into a reversed list #}
+{% for number in  numbers|make_list reversed %}
+{{number}}<br>
+{% endfor %}
+<hr><hr>
+
+{% for number in  numbers|make_list reversed %}
+{{forloop.revcounter}}<br>
+{% endfor %}
